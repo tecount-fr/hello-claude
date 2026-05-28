@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "hello-claude"
+  site-url: "https://tecount-fr.github.io/hello-claude"
+  description: ""
+  repo-branch: main
+  repo-url: "https://github.com/tecount-fr/hello-claude"
