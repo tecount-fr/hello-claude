@@ -1,0 +1,152 @@
+[
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "hello\n\ndef hello(\n    name:str='World'\n)-&gt;str:\n\nReturn a friendly greeting.\n\nassert hello() == \"Hello, World!\"\nassert hello(\"Claude\") == \"Hello, Claude!\"\n\n\n\n\nsag_hallo\n\ndef sag_hallo(\n    name:str\n)-&gt;str:\n\nReturn a German greeting.\n\nassert sag_hallo(\"Welt\") == \"Hallo Welt!\"\nassert sag_hallo(\"Claude\") == \"Hallo Claude!\"",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Hello World: nbdev + Claude Code on GitHub",
+    "section": "",
+    "text": "A minimal end-to-end walkthrough for building a Python package with notebook-driven development (nbdev), wired up to Claude Code so that GitHub issues can be triaged and fixed automatically via @claude mentions.\nYou write notebooks. nbdev exports modules, runs tests, and publishes docs. Claude handles small fixes, refactors, and keeps docs in sync. You stay in the loop and review every PR.",
+    "crumbs": [
+      "Hello World: nbdev + Claude Code on GitHub"
+    ]
+  },
+  {
+    "objectID": "index.html#what-youll-have-at-the-end",
+    "href": "index.html#what-youll-have-at-the-end",
+    "title": "Hello World: nbdev + Claude Code on GitHub",
+    "section": "What you’ll have at the end",
+    "text": "What you’ll have at the end\n\nA public GitHub repo with a working Python package\nAuto-generated documentation site on GitHub Pages\nCI that tests notebooks on every push\nA @claude bot that responds to issues and PR comments, opens branches, edits the right notebook, runs nbdev-prepare, and submits PRs",
+    "crumbs": [
+      "Hello World: nbdev + Claude Code on GitHub"
+    ]
+  },
+  {
+    "objectID": "index.html#prerequisites",
+    "href": "index.html#prerequisites",
+    "title": "Hello World: nbdev + Claude Code on GitHub",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n\nmacOS, Linux, or Windows under WSL (nbdev does not support plain cmd/PowerShell)\nPython 3.10+ with pip\nA GitHub account\nEither an Anthropic API key (from console.anthropic.com) or a Claude Pro/Max subscription\nOptional but helpful: the GitHub CLI (gh)",
+    "crumbs": [
+      "Hello World: nbdev + Claude Code on GitHub"
+    ]
+  },
+  {
+    "objectID": "index.html#part-1-install-the-tooling",
+    "href": "index.html#part-1-install-the-tooling",
+    "title": "Hello World: nbdev + Claude Code on GitHub",
+    "section": "Part 1 — Install the tooling",
+    "text": "Part 1 — Install the tooling\nYou only do this once per machine.\n# JupyterLab\npip install jupyterlab\n\n# nbdev itself\npip install nbdev\n\n# Quarto (the docs engine; will ask for sudo)\nnbdev-install-quarto\n\n# Quarto's JupyterLab extension (nicer rendering while you edit)\npip install jupyterlab-quarto\n\n# Claude Code CLI\nnpm install -g @anthropic-ai/claude-code\n\nVerify:\n\n```bash\nnbdev-help     # should print a list of nbdev-* commands\nclaude --version",
+    "crumbs": [
+      "Hello World: nbdev + Claude Code on GitHub"
+    ]
+  },
+  {
+    "objectID": "index.html#part-2-create-an-empty-github-repo",
+    "href": "index.html#part-2-create-an-empty-github-repo",
+    "title": "Hello World: nbdev + Claude Code on GitHub",
+    "section": "Part 2 — Create an empty GitHub repo",
+    "text": "Part 2 — Create an empty GitHub repo\nGo to github.com/new and create a new repo. Use the name hello-claude (or whatever you prefer).\n\n⚠️ Important: Add a description (nbdev will use it later), but do not add a README, .gitignore, or license at this point. nbdev will generate those for you.\n\nYou should land on an empty repo page after clicking Create repository.",
+    "crumbs": [
+      "Hello World: nbdev + Claude Code on GitHub"
+    ]
+  },
+  {
+    "objectID": "index.html#part-3-initialise-the-repo-with-nbdev",
+    "href": "index.html#part-3-initialise-the-repo-with-nbdev",
+    "title": "Hello World: nbdev + Claude Code on GitHub",
+    "section": "Part 3 — Initialise the repo with nbdev",
+    "text": "Part 3 — Initialise the repo with nbdev\nClone the empty repo and cd into it:\ngit clone https://github.com/&lt;your-user&gt;/hello-claude.git\ncd hello-claude\nYou’ll see the warning “You appear to have cloned an empty repository” — that’s expected. Now scaffold the project:\nnbdev-new\n\npyproject.toml (project metadata — nbdev3 uses this instead of the old settings.ini)\nnbs/00_core.ipynb and nbs/index.ipynb (your starter notebooks)\nhello_claude/ (the Python package, name derived from the repo name with - replaced by _)\n.github/workflows/test.yaml (CI: notebook tests + sync check)\n.github/workflows/deploy.yaml (builds and publishes docs to GitHub Pages)\nLICENSE, .gitignore, MANIFEST.in\n\nQuick sanity check on pyproject.toml, then push:\ngit add .\ngit commit -m \"Initial nbdev scaffold\"\ngit push",
+    "crumbs": [
+      "Hello World: nbdev + Claude Code on GitHub"
+    ]
+  },
+  {
+    "objectID": "index.html#part-4-enable-github-pages",
+    "href": "index.html#part-4-enable-github-pages",
+    "title": "Hello World: nbdev + Claude Code on GitHub",
+    "section": "Part 4 — Enable GitHub Pages",
+    "text": "Part 4 — Enable GitHub Pages\nIn your repo on GitHub: Settings → Pages → Branch: gh-pages → Save.\nIf gh-pages isn’t in the dropdown yet, wait a minute for the first deploy workflow to create it, then refresh.\nOpen the Actions tab. You should see two workflow runs: CI and Deploy to GitHub Pages. After they finish, your docs are live at https://&lt;your-user&gt;.github.io/hello-claude.",
+    "crumbs": [
+      "Hello World: nbdev + Claude Code on GitHub"
+    ]
+  },
+  {
+    "objectID": "index.html#part-5-make-your-first-edit",
+    "href": "index.html#part-5-make-your-first-edit",
+    "title": "Hello World: nbdev + Claude Code on GitHub",
+    "section": "Part 5 — Make your first edit",
+    "text": "Part 5 — Make your first edit\nInstall nbdev’s git hooks so notebooks stay diff-friendly:\nnbdev-install-hooks\nInstall your package in editable mode (so you can import hello_claude from anywhere):\npip install -e '.[dev]'\nStart a live docs preview in a side terminal — you’ll see changes as you save notebooks:\nnbdev-preview\nNow open Jupyter (jupyter lab) and edit nbs/00_core.ipynb. Replace the placeholder function with:\n#| export\ndef say_hello(to: str) -&gt; str:\n    \"Say hello to somebody\"\n    return f\"Hello {to}!\"\nAdd a test cell below it:\nassert say_hello(\"Claude\") == \"Hello Claude!\"\nRestart the kernel and run all cells (the ⏩ button). Then in the terminal:\nnbdev-prepare\nThis runs nbdev-export (notebooks → .py), nbdev-test (executes all notebook cells), nbdev-clean (strips junk metadata), and nbdev-readme (regenerates README.md from index.ipynb).\nCommit and push:\ngit add .\ngit commit -m \"feat: add say_hello\"\ngit push\nCheck the Actions tab — CI should pass green ✅, and the docs site updates within a minute.",
+    "crumbs": [
+      "Hello World: nbdev + Claude Code on GitHub"
+    ]
+  },
+  {
+    "objectID": "index.html#part-6-wire-up-claude-code",
+    "href": "index.html#part-6-wire-up-claude-code",
+    "title": "Hello World: nbdev + Claude Code on GitHub",
+    "section": "Part 6 — Wire up Claude Code",
+    "text": "Part 6 — Wire up Claude Code\nThis is where the magic kicks in.\n\n6a. Pick an authentication method\n\n\n\n\n\n\n\n\nOption\nWhen to use\nCost model\n\n\n\n\nAPI key\nTeam repos, predictable billing, heavy automation\nPay per token\n\n\nOAuth token (Pro/Max)\nPersonal projects, you already have a subscription\nUses your subscription quota\n\n\n\n\n⚠️ If both ANTHROPIC_API_KEY and CLAUDE_CODE_OAUTH_TOKEN are set in the repo, the API key wins and the subscription is bypassed.\n\n\n\n6b. Install the GitHub App\nFrom the repo root:\nclaude\nThen inside Claude Code:\n/install-github-app\nFollow the wizard. It will:\n\nOpen a browser to install the Anthropic GitHub App on this repo\nAsk which auth method you want\nFor OAuth: prompt you to run claude setup-token and paste the result\nCommit .github/workflows/claude.yml to a new branch and open a PR\n\nMerge that PR. From this point on, @claude mentions in issues and PR comments will trigger the action.\n\n\n6c. The generated workflow (for reference)\nname: Claude Code\non:\n  issue_comment:\n    types: [created]\n  pull_request_review_comment:\n    types: [created]\n  issues:\n    types: [opened, assigned]\n  pull_request_review:\n    types: [submitted]\n\njobs:\n  claude:\n    if: contains(github.event.comment.body, '@claude') || contains(github.event.issue.body, '@claude')\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n      pull-requests: write\n      issues: write\n      id-token: write\n    steps:\n      - uses: actions/checkout@v4\n      - uses: anthropics/claude-code-action@v1\n        with:\n          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}\n          # OR for API-key auth:\n          # anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}",
+    "crumbs": [
+      "Hello World: nbdev + Claude Code on GitHub"
+    ]
+  },
+  {
+    "objectID": "index.html#part-7-tell-claude-how-nbdev-works",
+    "href": "index.html#part-7-tell-claude-how-nbdev-works",
+    "title": "Hello World: nbdev + Claude Code on GitHub",
+    "section": "Part 7 — Tell Claude how nbdev works",
+    "text": "Part 7 — Tell Claude how nbdev works\nThis is the single most important step for this stack. Without it, Claude will edit the auto-generated .py files in hello_claude/, and your next nbdev-export will silently overwrite its work.\nCreate CLAUDE.md in the repo root:\n# Project Conventions\n\nThis is an **nbdev3** project. **Notebooks in `nbs/` are the source of truth.**\n\n## Rules\n\n- **Never edit `.py` files in `hello_claude/` directly** — they are auto-generated.\n- All code changes happen in `nbs/*.ipynb` notebooks.\n- After editing a notebook, run `nbdev-prepare` to sync modules, run tests,\n  clean notebooks, and update `README.md`.\n- New public functions need:\n  - A docstring on the first line\n  - The `#| export` directive at the top of the cell\n  - At least one test cell with `assert` statements directly below\n- Use `#| hide` for cells that shouldn't appear in docs.\n- Commit messages follow Conventional Commits: `feat:`, `fix:`, `docs:`, `test:`, `refactor:`.\n\n## Workflow for fixing an issue\n\n1. Read the issue carefully.\n2. Identify the notebook in `nbs/` that owns the relevant module.\n3. Edit the notebook (not the `.py` file).\n4. Add or update test cells in the same notebook.\n5. Run `nbdev-prepare` and confirm tests pass.\n6. Commit on a new branch named `claude/&lt;issue-number&gt;-&lt;short-slug&gt;`.\n7. Open a PR referencing the issue with `Fixes #&lt;number&gt;`.\n\n## Useful commands\n\n- `nbdev-export` — notebooks → .py modules\n- `nbdev-test` — run all notebook-based tests\n- `nbdev-clean` — strip metadata from notebooks\n- `nbdev-prepare` — all of the above plus README sync\n- `nbdev-preview` — local docs preview (not needed in CI)\nCommit and push:\ngit add CLAUDE.md\ngit commit -m \"docs: add CLAUDE.md with nbdev conventions\"\ngit push",
+    "crumbs": [
+      "Hello World: nbdev + Claude Code on GitHub"
+    ]
+  },
+  {
+    "objectID": "index.html#part-8-smoke-test",
+    "href": "index.html#part-8-smoke-test",
+    "title": "Hello World: nbdev + Claude Code on GitHub",
+    "section": "Part 8 — Smoke test",
+    "text": "Part 8 — Smoke test\nOpen a new issue on GitHub:\n\nTitle: Add German greeting\nBody: @claude please add a sag_hallo(name) function to nbs/00_core.ipynb that returns \"Hallo {name}!\". Include a test cell with an assert, run nbdev-prepare before committing, and open a PR.\n\nWhat happens next:\n\nActions tab — the Claude Code workflow starts within seconds\nClaude reads the issue, CLAUDE.md, and the notebook\nIt creates a branch like claude/1-add-german-greeting\nIt edits nbs/00_core.ipynb, runs nbdev-prepare\nIt opens a PR that references the issue\nnbdev’s own test.yaml workflow runs against the PR\nYou review, request changes if needed (via @claude in PR comments), and merge\nThe deploy.yaml workflow rebuilds and publishes the docs site",
+    "crumbs": [
+      "Hello World: nbdev + Claude Code on GitHub"
+    ]
+  },
+  {
+    "objectID": "index.html#common-pitfalls",
+    "href": "index.html#common-pitfalls",
+    "title": "Hello World: nbdev + Claude Code on GitHub",
+    "section": "Common pitfalls",
+    "text": "Common pitfalls\n\n\n\n\n\n\n\n\nSymptom\nCause\nFix\n\n\n\n\nClaude edited .py files instead of .ipynb\nCLAUDE.md not clear enough, or not present\nStrengthen CLAUDE.md, add an explicit “never touch X” rule, mention nbdev-export\n\n\nCI fails with “notebooks and modules out of sync”\nClaude or you forgot nbdev-prepare before commit\nnbdev-prepare && git add . && git commit --amend\n\n\nQuarto-related errors in CI\nWorkflow runner is missing Quarto\nnbdev’s default test.yaml handles this; in custom workflows call nbdev-install-quarto\n\n\nNotebook merge conflicts\nHooks not installed\nnbdev-install-hooks (per repo)\n\n\nOAuth subscription quota burns fast\nHeavy automation triggers (pull_request: [opened, synchronize])\nSwitch to API-key auth, or narrow trigger conditions\n\n\n@claude mention does nothing\nApp not installed on this repo, or PR with workflow not merged yet\nRe-run /install-github-app, check repo’s installed GitHub Apps",
+    "crumbs": [
+      "Hello World: nbdev + Claude Code on GitHub"
+    ]
+  },
+  {
+    "objectID": "index.html#what-this-stack-gives-you",
+    "href": "index.html#what-this-stack-gives-you",
+    "title": "Hello World: nbdev + Claude Code on GitHub",
+    "section": "What this stack gives you",
+    "text": "What this stack gives you\n\nYou stay in control of design. Claude only touches what you ask via issues/PR comments.\nDocumentation is never stale. Notebooks are simultaneously source, tests, and docs.\nReleases are one command. nbdev-pypi or nbdev-release-both publishes to PyPI/conda when you’re ready.\nTwo safety nets. Claude’s PR has to pass nbdev’s CI before you merge.",
+    "crumbs": [
+      "Hello World: nbdev + Claude Code on GitHub"
+    ]
+  },
+  {
+    "objectID": "index.html#resources",
+    "href": "index.html#resources",
+    "title": "Hello World: nbdev + Claude Code on GitHub",
+    "section": "Resources",
+    "text": "Resources\n\nnbdev documentation\nnbdev end-to-end tutorial\nClaude Code documentation\nClaude Code GitHub Actions guide\nanthropics/claude-code-action repository",
+    "crumbs": [
+      "Hello World: nbdev + Claude Code on GitHub"
+    ]
+  }
+]
