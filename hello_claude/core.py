@@ -7,12 +7,12 @@ Docs: https://tecount-fr.github.io/hello-claudecore.html.md"""
 # %% auto #0
 __all__ = ['hello', 'sag_hallo']
 
-# %% ../nbs/00_core.ipynb #0e8f7e21
+# %% ../nbs/00_core.ipynb #e2e28081
 def hello(name: str = "World") -> str:
     "Return a friendly greeting."
     return f"Hello, {name}!"
 
-# %% ../nbs/00_core.ipynb #a1b2c3d4
+# %% ../nbs/00_core.ipynb #a7302b44
 def sag_hallo(name: str) -> str:
     "Return a German greeting."
     return f"Hallo {name}!"

@@ -5,5 +5,5 @@ d = { 'settings': { 'branch': 'main',
                 'doc_host': 'https://tecount-fr.github.io',
                 'git_url': 'https://github.com/tecount-fr/hello-claude',
                 'lib_path': 'hello_claude'},
-  'syms': {'hello_claude.core': {'hello_claude.core.hello': ('core.html#hello', 'hello_claude/core.py'),
+  'syms': { 'hello_claude.core': { 'hello_claude.core.hello': ('core.html#hello', 'hello_claude/core.py'),
                                    'hello_claude.core.sag_hallo': ('core.html#sag_hallo', 'hello_claude/core.py')}}}

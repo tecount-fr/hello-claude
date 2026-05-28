@@ -200,8 +200,8 @@ This is where the magic kicks in.
 
 | Option | When to use | Cost model |
 |----|----|----|
-| **API key** | Team repos, predictable billing, heavy automation | Pay per token (typically \<\$5/mo for small teams) |
-| **OAuth token (Pro/Max)** | Personal projects, you already have a subscription | Uses your subscription quota — shared with interactive use |
+| **API key** | Team repos, predictable billing, heavy automation | Pay per token |
+| **OAuth token (Pro/Max)** | Personal projects, you already have a subscription | Uses your subscription quota |
 
 > ⚠️ If both `ANTHROPIC_API_KEY` and `CLAUDE_CODE_OAUTH_TOKEN` are set
 > in the repo, the **API key wins** and the subscription is bypassed.
