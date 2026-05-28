@@ -30,6 +30,17 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install nbdev and the package
+        run: |
+          python -m pip install --upgrade pip
+          pip install nbdev
+          pip install -e .
+
       - name: Run Claude Code
         id: claude
         uses: anthropics/claude-code-action@v1
